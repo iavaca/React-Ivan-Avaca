@@ -16,7 +16,7 @@ function App() {
     <>
       <Navbar />
       <ItemListContainer texto="Bienvenido a Alquileres" items={autos} />
-      {/* Aquí puedes agregar más componentes o contenido según sea necesario */}
+      
     </>
   );
 }
