@@ -1,0 +1,136 @@
+/* Estilos generales de la barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Alinea el logo a la izquierda y los enlaces a la derecha */
+  align-items: center; /* Centra verticalmente los elementos */
+  background-color: #333; /* Fondo oscuro */
+  color: #fff; /* Color del texto blanco */
+  padding: 1rem 2rem; /* Espaciado interno */
+  height: 60px; /* Altura fija */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Sutil sombra para darle profundidad */
+  position: relative; /* Necesario para posicionar el menú desplegable */
+  z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
+}
+
+/* Estilos del logo */
+.navbar__logo img {
+  height: 40px; /* Ajusta el tamaño del logo */
+  width: auto; /* Mantiene la proporción */
+  border-radius: 8px; /* Bordes ligeramente redondeados para el logo */
+}
+
+/* Estilos de la lista de enlaces (versión desktop) */
+.navbar__links {
+  list-style: none; /* Elimina los puntos de la lista */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Muestra los enlaces en fila */
+  gap: 1.5rem; /* Espacio entre cada enlace */
+  transition: all 0.3s ease-in-out; /* Transición para la apertura/cierre */
+}
+
+/* Estilos de los enlaces individuales */
+.navbar__links a {
+  color: #fff; /* Color del texto blanco */
+  text-decoration: none; /* Elimina el subrayado */
+  font-family: 'Inter', sans-serif; /* Un tipo de letra moderno y legible */
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem; /* Añade un poco de padding para que el hover sea más cómodo */
+  border-radius: 5px; /* Bordes redondeados para el área del hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+/* Efecto al pasar el mouse (hover) */
+.navbar__links a:hover {
+  background-color: #555; /* Un fondo ligeramente más claro al pasar el mouse */
+  color: #a4c9f1; /* Un color azul claro para el texto en hover */
+}
+
+/* Estilos del botón de hamburguesa */
+.hamburger-button {
+    display: none; /* Oculto por defecto en desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001; /* Asegura que el botón esté por encima del menú */
+}
+
+.hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
+/* Animación del ícono de hamburguesa a "X" */
+.hamburger-button.open .hamburger-icon:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-button.open .hamburger-icon:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-button.open .hamburger-icon:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* Diseño Responsivo: Se aplica cuando el ancho de la pantalla es de 768px o menos */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Apila los elementos (header y enlaces) verticalmente */
+        padding: 1rem; /* Ajusta el espaciado */
+        height: auto; /* La altura se ajusta al contenido */
+        align-items: center; /* Centra los elementos apilados */
+    }
+
+    /* Nuevo estilo para el contenedor del logo y el botón de hamburguesa */
+    .navbar__header {
+        display: flex; /* Convierte este contenedor en un flexbox */
+        justify-content: space-between; /* Empuja el logo a la izquierda y la hamburguesa a la derecha */
+        align-items: center; /* Centra verticalmente */
+        width: 100%; /* Ocupa todo el ancho de la navbar */
+        padding-bottom: 1rem; /* Espacio entre el header y el menú desplegable */
+    }
+
+    .navbar__logo {
+        margin-bottom: 0; /* Asegura que no haya margen inferior aquí */
+    }
+
+    /* Muestra el botón de hamburguesa en móvil */
+    .hamburger-button {
+        display: block;
+    }
+
+    /* Oculta los enlaces por defecto en móvil */
+    .navbar__links {
+        flex-direction: column; /* Apila los enlaces de navegación */
+        gap: 0.5rem; /* Reduce el espacio entre los enlaces apilados */
+        width: 100%; /* Los enlaces ocupan todo el ancho disponible */
+        align-items: center; /* Centra los enlaces apilados */
+        max-height: 0; /* Oculta el menú por defecto */
+        overflow: hidden; /* Esconde el contenido que se desborda */
+        padding: 0; /* Elimina el padding cuando está cerrado */
+    }
+
+    /* Muestra los enlaces cuando la clase --open está presente */
+    .navbar__links--open {
+        max-height: 300px; /* Altura máxima para mostrar el menú (ajusta según sea necesario) */
+        padding: 1rem 0; /* Añade padding cuando está abierto */
+    }
+
+    .navbar__links li {
+        width: 100%; /* Cada elemento de la lista ocupa todo el ancho */
+        text-align: center; /* Centra el texto del enlace */
+    }
+    .navbar__links a {
+        display: block; /* Hace que el enlace ocupe todo el espacio del li para facilitar el clic */
+        width: 100%;
+    }
+}
