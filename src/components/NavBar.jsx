@@ -31,8 +31,10 @@ const Navbar = () => {
       {/* Lista de enlaces, con clase condicional para mostrar/ocultar en móvil */}
       <ul className={`navbar__links ${isOpen ? 'navbar__links--open' : ''}`}>
         <li><a href="/">Inicio</a></li>
-        <li><a href="/about">Acerca de</a></li>
-        <li><a href="/contact">Contacto</a></li>
+        <li><a href="/autos">Autos</a></li>
+        <li><a href="/camiones">Camiones</a></li>
+        <li><a href="/camionetas">Camionetas</a></li>
+
         <li><CardWidget/></li>
       </ul>
     </nav>
