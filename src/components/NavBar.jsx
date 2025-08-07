@@ -1,44 +1,47 @@
-import React, { useState } from 'react'; 
-import '../css/NavBar.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import CardWidget from './CardWidget';
-const Navbar = () => {  
-  // Estado para controlar si el menú móvil está abierto o cerrado
-  const [isOpen, setIsOpen] = useState(false);
 
-  // Función para alternar el estado del menú
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar__logo">
-       
-        <img src="/logo.png" alt="Logo" />
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
+          <img src="/logo.png" alt="Logo" style={{ height: '40px' }} />
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <a className="nav-link" href="/">Inicio</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/autos">Autos</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/camiones">Camiones</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/camionetas">Camionetas</a>
+            </li>
+            <li className="nav-item">
+              <CardWidget />
+            </li>
+          </ul>
+        </div>
       </div>
-
-      {/* Botón de hamburguesa para pantallas pequeñas */}
-      <button 
-        className={`hamburger-button ${isOpen ? 'open' : ''}`} 
-        onClick={toggleMenu}
-        aria-label="Toggle navigation menu" // Accesibilidad
-      >
-        <span className="hamburger-icon"></span>
-        <span className="hamburger-icon"></span>
-        <span className="hamburger-icon"></span>
-      </button>
-
-      {/* Lista de enlaces, con clase condicional para mostrar/ocultar en móvil */}
-      <ul className={`navbar__links ${isOpen ? 'navbar__links--open' : ''}`}>
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/autos">Autos</a></li>
-        <li><a href="/camiones">Camiones</a></li>
-        <li><a href="/camionetas">Camionetas</a></li>
-
-        <li><CardWidget/></li>
-      </ul>
     </nav>
   );
-}
+};
 
 export default Navbar;
