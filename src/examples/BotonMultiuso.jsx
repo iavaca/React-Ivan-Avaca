@@ -4,7 +4,7 @@ console.log(props);
 
 
 
-    const { color, padding, borderRadius } = props;
+    const { color, padding, borderRadius, children} = props;
     const styles = {
         backgroundColor: color,
         color: 'white',
@@ -18,7 +18,7 @@ console.log(props);
     }
     return (
         <>   
-         <button style={styles} onClick={props.onClickHandler} onPointerMove={props.move}>mostrar</button>
+         <button style={styles} onClick={props.onClickHandler} onPointerMove={props.move}>{children}</button>
         </>
     )
 }

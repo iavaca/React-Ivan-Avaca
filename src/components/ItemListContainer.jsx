@@ -1,53 +1,36 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/ItemListContainer.css';
-import BotonMultiuso from '../examples/BotonMultiuso';
-import React, { useState } from 'react';
-
-const ItemListContainer = ({ texto, items }) => {
-
-    const [oculta , setOculta] = useState(false);
-
-const toggleOculta = () => {
-    setOculta(!oculta);
-}
+import { getVehiculos } from '../mock/mock';
+import { useEffect, useState } from 'react';
+import ItemList from './ItemList';
 
 
+
+const ItemListContainer = ({ texto }) => {
+    // Estado para controlar la visibilidad de TODO el catálogo
+const [data, setData] = useState([]);
+  useEffect(() => {
+    getVehiculos()
+    .then((res) => setData(res))
+    .catch((error) => console.error('Error al obtener los datos:', error));
+    getVehiculos().then((data) => {
+      console.log('Datos obtenidos:', data);
+    }).catch((error) => {
+      console.error('Error al obtener los datos:', error);
+    });
+  }, []);
+  
+   
+    // Simulación de una llamada a la API para obtener los datos
 
     return (
-        <div >     
-        <BotonMultiuso onClickHandler={toggleOculta} pading="1rem" borderRadius="5px" color="black">Mostrar Catalogo
-                                           </BotonMultiuso>
+     <div>
+         
   
-        
-        <div className="container my-4" style={{ display: oculta ? 'none' : 'block' }}> 
-            <h1 className="mb-4 text-center">{texto}</h1>
-            <div className="row">
-                {items && items.length > 0 ? (
-                    items.map((item) => (
-                        <div key={item.id} className="col-md-4 mb-4">
-                            <div className="card h-100">
-                                <div className="card-body">
-                                    <h5 className="card-title">{item.marca} {item.modelo}</h5>
-                                    <p className="card-text">Año: {item.km}</p>
-                                    <p className="card-text">Año: {item.año}</p>
-                                    <button className="btn btn-primary">Ver Detalles</button>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <div className="col-12">
-                        <div className="card">
-                            <div className="card-body">
-                                No hay artículos disponibles.
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </div>
-        </div>
+        <h2 className="text-center mt-4">{texto}</h2>
+        <ItemList data={data} />
         </div>
     );
-}
-export default ItemListContainer;
+  }
+  
+  export default ItemListContainer;
+  
