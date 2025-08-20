@@ -1,22 +1,14 @@
 import React from 'react';
-import Items from './Item';
+import Item from './Item';
+
 const ItemList = ({ data }) => {
-    if (data.length === 0) {
-      return (
-        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '300px' }}>
-        <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Cargando...</span>
-        </div>
-        </div>
-      );
-    }
+    // La lógica de carga y de "no hay resultados" se maneja mejor en el componente padre (ItemListContainer)
     return (
-        <div className="row">
-            {data.map((data) => (
-                <div className="col-md-4" key={data.id}>
-                    <Items item={data} />
-                </div>     
-                 
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {data.map((item) => (
+                <div className="col" key={item.id}>
+                    <Item item={item} />
+                </div>
             ))}
         </div>
     );

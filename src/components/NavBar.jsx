@@ -1,14 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Link, NavLink } from 'react-router-dom';
 import CardWidget from './CardWidget';
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img src="/logo.png" alt="Logo" style={{ height: '40px' }} />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,20 +22,20 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link" href="/">Inicio</a>
+              <NavLink className="nav-link" to="/" end>Inicio</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/autos">Autos</a>
+              <NavLink className="nav-link" to="/autos/">Autos</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/camiones">Camiones</a>
+              <NavLink className="nav-link" to="/motos/">Motos</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/camionetas">Camionetas</a>
+              <NavLink className="nav-link" to="/camionetas/">Camionetas</NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item d-flex align-items-center">
               <CardWidget />
             </li>
           </ul>

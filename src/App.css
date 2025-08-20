@@ -1,13 +1,5 @@
-*{
-   
-    font-family: Arial, sans-serif; /* Default font */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Use border-box model for all elements */             
-    text-decoration: none; /* Remove underline from links */
-    list-style: none; /* Remove bullet points from lists */
-        
-
-
-
-} 
+/* Agrega un padding superior al contenido principal para evitar que la navbar fija lo oculte */
+.main-content {
+  /* La altura de la navbar de Bootstrap es 56px. 72px da un poco de espacio extra. */
+  padding-top: 72px;
+}
